@@ -1,9 +1,13 @@
 ﻿using FoodMartMongoDb.Dtos.CategoryDtos;
+using FoodMartMongoDb.Entities;
+using MongoDB.Driver;
 
 namespace FoodMartMongoDb.Services.CategoryServices
 {
     public interface ICategoryService
     {
+        
+
         Task<List<ResultCategoryDto>> GetAllCategoryAsync();
         Task CreateCategoryAsync(CreateCategoryDto createCategoryDto);
         Task UpdateCategoryAsync(UpdateCategoryDto updateCategoryDto);

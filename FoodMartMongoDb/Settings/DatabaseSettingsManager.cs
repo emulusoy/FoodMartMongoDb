@@ -1,6 +1,6 @@
 ﻿namespace FoodMartMongoDb.Settings
 {
-    public interface IDatabaseSettings
+    public class DatabaseSettingsManager : IDatabaseSettings
     {
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
