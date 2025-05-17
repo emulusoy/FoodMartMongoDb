@@ -1,9 +1,11 @@
 ﻿using FoodMartMongoDb.Dtos.ProductDtos;
+using MongoDB.Driver;
 
 namespace FoodMartMongoDb.Services.ProductServices
 {
     public class ProductServiceManager : IProductService
     {
+        private readonly IMongoCollection<>
         public Task CreateProductAsync(CreateProductDto createProductDto)
         {
             throw new NotImplementedException();
