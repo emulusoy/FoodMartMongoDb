@@ -18,19 +18,23 @@ namespace FoodMartMongoDb.Services.CustomerServices
             _mongoCollection = database.GetCollection<Customer>(_databaseSettings.CustomerCollectionName);
             _mapper = mapper;
         }
-        public Task CreateCustomerAsync(CreateCustomerDto createCustomerDto)
+        public async Task CreateCustomerAsync(CreateCustomerDto createCustomerDto)
         {
-            throw new NotImplementedException();
+            var value=_mapper.Map<Customer>(createCustomerDto);
+            await _mongoCollection.InsertOneAsync(value);
         }
 
-        public Task DeleteCustomerAsync(string id)
+        public async Task DeleteCustomerAsync(string id)
         {
-            throw new NotImplementedException();
+            await _mongoCollection.DeleteOneAsync(x=>x.CustomerId==id);
         }
 
-        public Task<List<ResultCustomerDto>> GetAllCustomerAsync()
+        public async Task<List<ResultCustomerDto>> GetAllCustomerAsync()
         {
-            throw new NotImplementedException();
+            var values=await _mongoCollection.Find(x=>true).ToListAsync();
+            return _mapper.Map<List<ResultCustomerDto>>(values);    
+
+
         }
 
         public Task<GetCustomerByIdDto> GetCustomerByIdAsync(string id)
@@ -38,9 +42,10 @@ namespace FoodMartMongoDb.Services.CustomerServices
             throw new NotImplementedException();
         }
 
-        public Task UpdateCustomerAsync(UpdateCustomerDto updateCustomerDto)
+        public async Task UpdateCustomerAsync(UpdateCustomerDto updateCustomerDto)
         {
-            throw new NotImplementedException();
+            var value = _mapper.Map<Customer>(updateCustomerDto);
+            await _mongoCollection.FindOneAndReplaceAsync(x=>x.CustomerId==updateCustomerDto.CustomerId,value);
         }
     }
 }

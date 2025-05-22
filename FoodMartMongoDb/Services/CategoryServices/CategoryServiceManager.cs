@@ -19,14 +19,16 @@ namespace FoodMartMongoDb.Services.CategoryServices
             _mapper = mapper;
         }
 
-        public Task CreateCategoryAsync(CreateCategoryDto createCategoryDto)
+        public async Task CreateCategoryAsync(CreateCategoryDto createCategoryDto)
         {
-            throw new NotImplementedException();
+            var value=_mapper.Map<Category>(createCategoryDto);
+            await _mongoCollection.InsertOneAsync(value);
+
         }
 
-        public Task DeleteCategoryAsync(string id)
+        public async Task DeleteCategoryAsync(string id)
         {
-            throw new NotImplementedException();
+            await _mongoCollection.DeleteOneAsync(x=>x.CategoryID==id);
         }
 
         public Task<List<ResultCategoryDto>> GetAllCategoryAsync()
@@ -39,9 +41,10 @@ namespace FoodMartMongoDb.Services.CategoryServices
             throw new NotImplementedException();
         }
 
-        public Task UpdateCategoryAsync(UpdateCategoryDto updateCategoryDto)
+        public async Task UpdateCategoryAsync(UpdateCategoryDto updateCategoryDto)
         {
-            throw new NotImplementedException();
+            var values=_mapper.Map<Category>(updateCategoryDto);
+            await _mongoCollection.FindOneAndReplaceAsync(x => x.CategoryID == updateCategoryDto.CategoryID, values);
         }
     }
 }
