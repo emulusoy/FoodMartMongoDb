@@ -31,14 +31,16 @@ namespace FoodMartMongoDb.Services.CategoryServices
             await _mongoCollection.DeleteOneAsync(x=>x.CategoryID==id);
         }
 
-        public Task<List<ResultCategoryDto>> GetAllCategoryAsync()
+        public async Task<List<ResultCategoryDto>> GetAllCategoryAsync()
         {
-            throw new NotImplementedException();
+            var values=await _mongoCollection.Find(x=>true).ToListAsync();
+            return _mapper.Map<List<ResultCategoryDto>>(values);
         }
 
-        public Task<GetCategoryByIdDto> GetCategoryByIdAsync(string id)
+        public async Task<GetCategoryByIdDto> GetCategoryByIdAsync(string id)
         {
-            throw new NotImplementedException();
+            var value=await _mongoCollection.Find(x=>x.CategoryID == id).FirstOrDefaultAsync();
+            return _mapper.Map<GetCategoryByIdDto>(value);
         }
 
         public async Task UpdateCategoryAsync(UpdateCategoryDto updateCategoryDto)

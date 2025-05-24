@@ -37,9 +37,10 @@ namespace FoodMartMongoDb.Services.CustomerServices
 
         }
 
-        public Task<GetCustomerByIdDto> GetCustomerByIdAsync(string id)
+        public async Task<GetCustomerByIdDto> GetCustomerByIdAsync(string id)
         {
-            throw new NotImplementedException();
+            var value=await _mongoCollection.Find(x=>x.CustomerId == id).FirstOrDefaultAsync();
+            return _mapper.Map<GetCustomerByIdDto>(value);
         }
 
         public async Task UpdateCustomerAsync(UpdateCustomerDto updateCustomerDto)
