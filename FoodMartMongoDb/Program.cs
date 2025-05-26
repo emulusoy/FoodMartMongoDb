@@ -15,7 +15,7 @@ builder.Services.AddScoped<IProductService,ProductServiceManager>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly()); //automapperi projeye tanitiyor backend backendin icinde butun profile siniflarini bul ve yukle mapping icindekileri!
 
-builder.Services.Configure<IDatabaseSettings>(builder.Configuration.GetSection("DatabaseSettingsKey"));//mongo db veritabani tanitma yaptik!
+builder.Services.Configure<DatabaseSettingsManager>(builder.Configuration.GetSection("DatabaseSettingsKey"));//mongo db veritabani tanitma yaptik!
 builder.Services.AddScoped<IDatabaseSettings>(sp =>
 {
     return sp.GetRequiredService<IOptions<DatabaseSettingsManager>>().Value;

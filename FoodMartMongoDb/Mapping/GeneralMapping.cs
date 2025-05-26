@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using FoodMartMongoDb.Dtos.CategoryDtos;
+using FoodMartMongoDb.Dtos.CustomerDtos;
+using FoodMartMongoDb.Dtos.ProductDtos;
 using FoodMartMongoDb.Entities;
 
 namespace FoodMartMongoDb.Mapping
@@ -13,15 +15,15 @@ namespace FoodMartMongoDb.Mapping
             CreateMap<Category, CreateCategoryDto>().ReverseMap();
             CreateMap<Category, GetCategoryByIdDto>().ReverseMap();
 
-            CreateMap<Product,ResultCategoryDto>().ReverseMap();
-            CreateMap<Product,UpdateCategoryDto>().ReverseMap();
-            CreateMap<Product,CreateCategoryDto>().ReverseMap();
-            CreateMap<Product, GetCategoryByIdDto>().ReverseMap();
+            CreateMap<Product,ResultProductDto>().ReverseMap();
+            CreateMap<Product,UpdateProductDto>().ReverseMap();
+            CreateMap<Product,CreateProductDto>().ReverseMap();
+            CreateMap<Product, GetProductByIdDto>().ReverseMap();
 
-            CreateMap<Customer, ResultCategoryDto>().ReverseMap();
-            CreateMap<Customer, UpdateCategoryDto>().ReverseMap();
-            CreateMap<Customer, CreateCategoryDto>().ReverseMap();
-            CreateMap<Customer, GetCategoryByIdDto>().ReverseMap();
+            CreateMap<Customer, ResultCustomerDto>().ReverseMap();
+            CreateMap<Customer, UpdateCustomerDto>().ReverseMap();
+            CreateMap<Customer, CreateCustomerDto>().ReverseMap();
+            CreateMap<Customer, GetCustomerByIdDto>().ReverseMap();
 
         }
     }

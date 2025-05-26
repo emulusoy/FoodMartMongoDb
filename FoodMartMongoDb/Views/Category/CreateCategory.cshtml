@@ -1,4 +1,4 @@
-﻿@model CreateCategoryDto
+﻿@model FoodMartMongoDb.Dtos.CategoryDtos.CreateCategoryDto
 @{
     Layout = null;
 }
@@ -8,9 +8,9 @@
 <div class="container"> 
 <br /><br /> 
 <h3 class="alert alert-primary">New Category Page|!</h3> 
-<form nethod="post"> 
-<label>Category Name</Label> 
-<input type="text" asp-for="CategoryName" class="fore-control" /> 
+<form method="post"> 
+<label>Category Name</label> 
+<input type="text" asp-for="CategoryName" class="form-control" /> 
 <br /> 
 <button class="btn btn-info">Add Category</button> 
 </form>

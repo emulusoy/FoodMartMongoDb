@@ -36,16 +36,16 @@ namespace FoodMartMongoDb.Controllers
             return RedirectToAction("CategoryList");
         }
         [HttpGet]
-        public IActionResult UpdateCategory(string id)
+        public async Task<IActionResult> UpdateCategory(string id)
         {
-            var value =  _categoryService.GetCategoryByIdAsync(id);
+            var value = await _categoryService.GetCategoryByIdAsync(id);
             return View(value);
         }
+
         [HttpPost]
-        public async Task<IActionResult> UpdateCategory(UpdateCategoryDto categoryDto)
+        public async Task<IActionResult> UpdateCategory(UpdateCategoryDto updateCategoryDto)
         {
-            
-            await _categoryService.UpdateCategoryAsync(categoryDto);
+            await _categoryService.UpdateCategoryAsync(updateCategoryDto);
             return RedirectToAction("CategoryList");
         }
     }
