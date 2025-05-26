@@ -38,7 +38,7 @@ namespace FoodMartMongoDb.Controllers
         [HttpGet]
         public IActionResult UpdateCategory(string id)
         {
-            var value = _categoryService.GetCategoryByIdAsync(id);
+            var value =  _categoryService.GetCategoryByIdAsync(id);
             return View(value);
         }
         [HttpPost]
