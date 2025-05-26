@@ -1,0 +1,52 @@
+﻿using FoodMartMongoDb.Dtos.CategoryDtos;
+using FoodMartMongoDb.Services.CategoryServices;
+using Microsoft.AspNetCore.Mvc;
+
+namespace FoodMartMongoDb.Controllers
+{
+    public class CategoryController : Controller
+    {
+        private readonly ICategoryService _categoryService;
+
+        public CategoryController(ICategoryService categoryService)
+        {
+            _categoryService = categoryService;
+        }
+
+        public async Task<IActionResult> CategoryList()
+        {
+            var values=await _categoryService.GetAllCategoryAsync();
+            return View(values);
+        }
+        [HttpGet]
+        public IActionResult CreateCategory()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateCategory(CreateCategoryDto categoryDto)
+        {
+             await _categoryService.CreateCategoryAsync(categoryDto);
+            return RedirectToAction("CategoryList");
+        }
+        public async Task<IActionResult> DeleteCategory(string id)
+        {
+            await _categoryService.DeleteCategoryAsync(id);
+
+            return RedirectToAction("CategoryList");
+        }
+        [HttpGet]
+        public IActionResult UpdateCategory(string id)
+        {
+            var value = _categoryService.GetCategoryByIdAsync(id);
+            return View(value);
+        }
+        [HttpPost]
+        public async Task<IActionResult> UpdateCategory(UpdateCategoryDto categoryDto)
+        {
+            
+            await _categoryService.UpdateCategoryAsync(categoryDto);
+            return RedirectToAction("CategoryList");
+        }
+    }
+}
