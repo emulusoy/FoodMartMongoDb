@@ -1,0 +1,17 @@
+﻿@model CreateCategoryDto
+@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container"> 
+<br /><br /> 
+<h3 class="alert alert-primary">New Category Page|!</h3> 
+<form nethod="post"> 
+<label>Category Name</Label> 
+<input type="text" asp-for="CategoryName" class="fore-control" /> 
+<br /> 
+<button class="btn btn-info">Add Category</button> 
+</form>
+</div>

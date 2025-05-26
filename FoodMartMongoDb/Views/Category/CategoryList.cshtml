@@ -1,0 +1,30 @@
+﻿@model List<ResultCategoryDto>
+@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <br /><br />
+    <table class="table table-bordered">
+        <tr>
+            <th>####</th>
+            <th>Name</th>
+            <th>Edit</th> 
+        </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+                <td>@item.CategoryID</td>
+                <td>@item.CategoryName</td>
+                <td><a href="/Category/DeleteCategory/" class="btn btn-primary">Del</a>
+                    <a href="/Category/UpdateCategory/" class="btn btn-primary">Update</a>
+                </td>
+                <td></td>
+    </tr>
+    }
+
+        </table>
+            <a href="/Category/CreateCategory/" class="btn btn-primary">NEW</a>
+</div>

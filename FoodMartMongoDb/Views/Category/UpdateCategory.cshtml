@@ -1,0 +1,20 @@
+﻿@model UpdateCategoryDto
+@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container"> 
+<br /><br /> 
+<h3 class="alert alert-primary">Update Category Page|!</h3> 
+<form nethod="post"> 
+    
+<input type="hidden" asp-for="CategoryID" class="fore-control" /> 
+
+<label>Category Name</Label> 
+<input type="text" asp-for="CategoryName" class="fore-control" /> 
+<br /> 
+<button class="btn btn-info">Add Category</button> 
+</form>
+</div>
